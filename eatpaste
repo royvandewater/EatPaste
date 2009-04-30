@@ -6,7 +6,7 @@ import getopt
 import urllib
 
 def usage():
-	print('Usage: pastebin [OPTION] <[FILE]\nSubmits contents of FILE to pastebin and returns the link.\n\n\t-c, --custom <prefix>\tCreates a private pastebin at\n\t\t\t\t<prefix>.pastebin.com\n\t-h, --help\t\tPrints this help and exits\n\t-p, --personal\t\tCreates a private pastebin using\n\t\t\t\tthe username of the executer.\n\t\t\t\ti.e. <username>.pastebin.com\n\nReport bugs and your other life problems to <support@pawkypages.com>')
+	print('Usage: eatpaste [OPTION] <[FILE]\nSubmits contents of FILE to pastebin and returns the link.\n\n\t-c, --custom <prefix>\tCreates a private pastebin at\n\t\t\t\t<prefix>.pastebin.com\n\t-h, --help\t\tPrints this help and exits\n\t-p, --personal\t\tCreates a private pastebin using\n\t\t\t\tthe username of the executer.\n\t\t\t\ti.e. <username>.pastebin.com\n\nReport bugs and your other life problems to <support@pawkypages.com>')
 
 def main(argv):
 	pastebinUrl = "http://pastebin.com/pastebin.php"
