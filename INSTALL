@@ -1,0 +1,5 @@
+On a UNIX system, simply execute this as root:
+
+
+make install
+

@@ -1,0 +1,50 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import getopt
+import urllib
+
+def usage():
+	print('Usage: pastebin [OPTION] <[FILE]\nSubmits contents of FILE to pastebin and returns the link.\n\n\t-c, --custom <prefix>\tCreates a private pastebin at\n\t\t\t\t<prefix>.pastebin.com\n\t-h, --help\t\tPrints this help and exits\n\t-p, --personal\t\tCreates a private pastebin using\n\t\t\t\tthe username of the executer.\n\t\t\t\ti.e. <username>.pastebin.com\n\nReport bugs and your other life problems to <support@pawkypages.com>')
+
+def main(argv):
+	pastebinUrl = "http://pastebin.com/pastebin.php"
+
+	try:
+		opts, args = getopt.getopt(argv, "c:hp", ["custom", "help", "personal"])
+	except getopt.error:
+		usage()
+		sys.exit(2)
+	for opt, arg in opts:
+		if opt in ("-h", "--help"):
+			usage()
+			sys.exit()
+		elif opt in ("-c", "--custom"):
+			pastebinUrl = "http://%s.pastebin.com/pastebin.php" % arg
+		elif opt in ("-p", "--personal"):
+			pastebinUrl = "http://%s.pastebin.com/pastebin.php" % os.environ['USER']
+
+	# read input
+	try:
+		paste_data = sys.stdin.read()
+	except KeyboardInterrupt:
+		sys.exit(1)
+	if paste_data.strip() == '':
+		exit(0)
+	
+	# submit form to pastebin
+	form_data = {
+		'parent_pid':'',
+		'format':'text',
+		'code2':paste_data,
+		'poster':os.environ['USER'],
+		'paste':'Send', 
+	}
+
+	response = urllib.urlopen(pastebinUrl, urllib.urlencode(form_data))
+	print response.geturl()
+
+if __name__ == "__main__":
+	main(sys.argv[1:])
+
