@@ -43,6 +43,7 @@ def main(argv):
 	}
 
 	response = urllib.urlopen(pastebinUrl, urllib.urlencode(form_data))
+  print "Just printing this to create a conflict"
 	print response.geturl()
 
 if __name__ == "__main__":
