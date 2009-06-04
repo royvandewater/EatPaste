@@ -18,7 +18,6 @@ def main(argv):
 		sys.exit(2)
 	for opt, arg in opts:
 		if opt in ("-h", "--help"):
-      print("conflict!")
 			usage()
 			sys.exit()
 		elif opt in ("-c", "--custom"):
@@ -44,7 +43,6 @@ def main(argv):
 	}
 
 	response = urllib.urlopen(pastebinUrl, urllib.urlencode(form_data))
-  print "Just printing this to create a conflict"
 	print response.geturl()
 
 if __name__ == "__main__":
